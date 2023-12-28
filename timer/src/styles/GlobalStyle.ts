@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   html,
   body {
-    min-width: 136.6rem;
+    /* min-width: 136.6rem; */
     width:100%;
     height: 100vh;
     margin: 0 auto;
