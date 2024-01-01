@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 export default function Timer() {
   const [hours, setHours] = useState(1);
   const [minutes, setMinutes] = useState(0);
@@ -30,9 +31,12 @@ export default function Timer() {
   }, [hours, minutes, seconds]);
 
   return (
-    <TimerContainer>
-      {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-    </TimerContainer>
+    <>
+      <TimerContainer>
+        {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+      </TimerContainer>
+      <Modal />
+    </>
   );
 }
 
