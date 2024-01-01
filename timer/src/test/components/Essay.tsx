@@ -13,6 +13,7 @@ const EssayContainer = styled.section`
   display: flex;
   justify-content: center;
   padding: 1rem 0;
+  width: 100%;
 `;
 const Question = styled.img`
   width: 93rem;
