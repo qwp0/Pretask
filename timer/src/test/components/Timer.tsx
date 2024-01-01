@@ -36,7 +36,7 @@ export default function Timer() {
       <TimerContainer>
         {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </TimerContainer>
-      {modal && <Modal />}
+      {modal && <Modal setModal={setModal} />}
     </>
   );
 }

@@ -1,12 +1,21 @@
+import React from 'react';
 import styled from 'styled-components';
 
-export default function Modal() {
+export interface ModalProps {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export default function Modal({ setModal }: ModalProps) {
+  function handleButton() {
+    setModal(false);
+  }
   return (
     <ModalContainer>
       <ModalView>
         <Text>시험이 종료되었습니다. 수고하셨습니다!</Text>
         <SubText>답안지를 이미지로 제출해주세요.</SubText>
-        <ChooseButton type="button">답안지 파일 선택하기</ChooseButton>
+        <ChooseButton type="button" onClick={handleButton}>
+          답안지 파일 선택하기
+        </ChooseButton>
       </ModalView>
     </ModalContainer>
   );
