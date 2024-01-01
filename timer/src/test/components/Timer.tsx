@@ -4,7 +4,6 @@ export default function Timer() {
   const [hours, setHours] = useState(1);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-
   useEffect(() => {
     const count = setInterval(() => {
       if (seconds > 0) {
@@ -18,6 +17,7 @@ export default function Timer() {
         if (minutes === 0) {
           if (hours === 0) {
             clearInterval(count);
+            alert('시간 종료');
           } else {
             setHours(hours - 1);
             setMinutes(59);
