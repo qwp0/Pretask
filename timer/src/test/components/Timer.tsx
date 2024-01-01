@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 export default function Timer() {
-  const [hours, setHours] = useState(1);
+  const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(10);
+  const [modal, setModal] = useState(false);
   useEffect(() => {
     const count = setInterval(() => {
       if (seconds > 0) {
@@ -17,7 +19,7 @@ export default function Timer() {
         if (minutes === 0) {
           if (hours === 0) {
             clearInterval(count);
-            alert('시간 종료');
+            setModal(true);
           } else {
             setHours(hours - 1);
             setMinutes(59);
@@ -30,9 +32,12 @@ export default function Timer() {
   }, [hours, minutes, seconds]);
 
   return (
-    <TimerContainer>
-      {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-    </TimerContainer>
+    <>
+      <TimerContainer>
+        {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+      </TimerContainer>
+      {modal && <Modal setModal={setModal} />}
+    </>
   );
 }
 
