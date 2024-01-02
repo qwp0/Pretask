@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-export default function Timer() {
+
+export interface StopProps {
+  isStop: boolean;
+}
+export default function Timer({ isStop }: StopProps) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(10);
   const [modal, setModal] = useState(false);
+
   useEffect(() => {
     const count = setInterval(() => {
-      if (seconds > 0) {
+      if (isStop) {
+        setModal(true);
+        clearInterval(count);
+      } else if (seconds > 0) {
         setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
+      } else if (seconds === 0) {
         if (minutes > 0) {
           setMinutes(minutes - 1);
           setSeconds(59);
@@ -29,7 +36,7 @@ export default function Timer() {
       }
     }, 1000);
     return () => clearInterval(count);
-  }, [hours, minutes, seconds]);
+  }, [hours, isStop, minutes, seconds]);
 
   return (
     <>
