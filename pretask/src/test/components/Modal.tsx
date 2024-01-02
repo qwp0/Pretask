@@ -3,16 +3,25 @@ import styled from 'styled-components';
 
 export interface ModalProps {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  takeTime: number;
 }
-export default function Modal({ setModal }: ModalProps) {
+export default function Modal(props: ModalProps) {
   function handleButton() {
-    setModal(false);
+    props.setModal(false);
   }
+  const hours = Math.floor(props.takeTime / 3600);
+  const minutes = Math.floor((props.takeTime - hours * 3600) / 60);
+  const seconds = props.takeTime - (hours * 3600 + minutes * 60);
   return (
     <ModalContainer>
       <ModalView>
         <Text>시험이 종료되었습니다. 수고하셨습니다!</Text>
         <SubText>답안지를 이미지로 제출해주세요.</SubText>
+        <TotalTime>
+          {`소요시간 : 0${hours}시간 `}
+          {minutes < 10 ? `0${minutes}분 ` : `${minutes}분 `}
+          {seconds < 10 ? `0${seconds}초` : `${seconds}초`}
+        </TotalTime>
         <ChooseButton type="button" onClick={handleButton}>
           답안지 파일 선택하기
         </ChooseButton>
@@ -32,6 +41,7 @@ const ModalContainer = styled.section`
 const ModalView = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -51,6 +61,10 @@ const SubText = styled.p`
   font-size: 1.4rem;
   font-weight: 400;
   color: gray;
+`;
+const TotalTime = styled.p`
+  font-size: 1.8rem;
+  font-weight: 700;
 `;
 const ChooseButton = styled.button`
   padding: 0.8rem 4rem;
