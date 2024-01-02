@@ -6,14 +6,14 @@ export interface StopProps {
   isStop: boolean;
 }
 export default function Timer({ isStop }: StopProps) {
+  // 1시간으로 가정
   const [hours, setHours] = useState(1);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [modal, setModal] = useState(false);
-  //서버에서 시간 받았다고 가정(아직 어떤 단위로 줄지 모름)
   const time = 3600;
   const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
-  console.log(takeTime);
+
   useEffect(() => {
     const count = setInterval(() => {
       if (isStop) {
