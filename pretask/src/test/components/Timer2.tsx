@@ -29,11 +29,11 @@ export default function Timer2({ isStop }: StopProps) {
   }, [initialTime]);
 
   useEffect(() => {
-    if (isStop) {
+    if (isStop || (value.h === 0 && value.m === 0 && value.s === 0)) {
       pause();
       setModal(true);
     }
-  }, [isStop, pause]);
+  }, [isStop, pause, value.h, value.m, value.s]);
 
   return (
     <>
