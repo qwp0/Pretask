@@ -7,26 +7,17 @@ export interface StopProps {
   isStop: boolean;
 }
 
+const timer = createTimeModel({
+  initialTime: 3600000, //ms 단위(s*1000)
+  direction: 'backward',
+});
+
 export default function Timer2({ isStop }: StopProps) {
   const initialTime = 3600000;
-  const [timer, setTimer] = useState(
-    createTimeModel({
-      initialTime, //ms 단위(s*1000)
-      direction: 'backward',
-    })
-  );
+
   const { value, pause } = useTimeModel(timer);
   const [modal, setModal] = useState(false);
   const takeTime = initialTime / 1000 - (value.h * 3600 + value.m * 60 + value.s);
-
-  useEffect(() => {
-    setTimer(
-      createTimeModel({
-        initialTime,
-        direction: 'backward',
-      })
-    );
-  }, [initialTime]);
 
   useEffect(() => {
     if (isStop || (value.h === 0 && value.m === 0 && value.s === 0)) {
