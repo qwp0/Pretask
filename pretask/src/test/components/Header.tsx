@@ -13,7 +13,7 @@ export default function Header() {
     <HeaderContainer>
       <BackButton type="button">뒤로가기</BackButton>
       {/* <Timer isStop={isStop} /> */}
-      <Timer2 />
+      <Timer2 isStop={isStop} />
       <StopButton type="button" onClick={handleStop}>
         종료하기
       </StopButton>
