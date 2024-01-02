@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 import Timer from './Timer';
+import { useState } from 'react';
 
 export default function Header() {
+  const [isStop, setIsStop] = useState(false);
+
+  function handleStop() {
+    setIsStop(true);
+  }
   return (
     <HeaderContainer>
       <BackButton type="button">뒤로가기</BackButton>
-      <Timer />
-      <StopButton type="button">종료하기</StopButton>
+      <Timer isStop={isStop} />
+      <StopButton type="button" onClick={handleStop}>
+        종료하기
+      </StopButton>
     </HeaderContainer>
   );
 }

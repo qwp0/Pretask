@@ -1,17 +1,27 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-export default function Timer() {
-  const [hours, setHours] = useState(0);
+
+export interface StopProps {
+  isStop: boolean;
+}
+export default function Timer({ isStop }: StopProps) {
+  // 1시간으로 가정
+  const [hours, setHours] = useState(1);
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(0);
   const [modal, setModal] = useState(false);
+  const time = 3600;
+  const takeTime = time - (hours * 3600 + minutes * 60 + seconds);
+
   useEffect(() => {
     const count = setInterval(() => {
-      if (seconds > 0) {
+      if (isStop) {
+        setModal(true);
+        clearInterval(count);
+      } else if (seconds > 0) {
         setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
+      } else if (seconds === 0) {
         if (minutes > 0) {
           setMinutes(minutes - 1);
           setSeconds(59);
@@ -29,14 +39,14 @@ export default function Timer() {
       }
     }, 1000);
     return () => clearInterval(count);
-  }, [hours, minutes, seconds]);
+  }, [hours, isStop, minutes, seconds]);
 
   return (
     <>
       <TimerContainer>
         {`0${hours}`}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </TimerContainer>
-      {modal && <Modal setModal={setModal} />}
+      {modal && <Modal setModal={setModal} takeTime={takeTime} />}
     </>
   );
 }
