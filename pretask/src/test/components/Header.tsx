@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Timer from './Timer';
+// import Timer from './Timer';
 import { useState } from 'react';
 import Timer2 from './Timer2';
 

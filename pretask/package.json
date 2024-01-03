@@ -30,6 +30,7 @@
     "postcss": "^8.4.32",
     "postcss-syntax": "^0.36.2",
     "stylelint-config-clean-order": "^5.2.0",
+    "stylelint-config-concentric-order": "^5.2.0",
     "stylelint-config-recommended": "^14.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "typescript": "^5.2.2",
