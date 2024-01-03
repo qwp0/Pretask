@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "react": "^18.2.0",
+    "react-compound-timer": "^2.0.5",
     "react-dom": "^18.2.0",
-    "style-components": "^0.1.0",
     "styled-components": "^6.1.6",
     "styled-reset": "^4.5.1"
   },
@@ -25,6 +26,12 @@
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "postcss-styled-syntax": "^0.6.3",
+    "postcss-syntax": "^0.36.2",
+    "stylelint": "^16.1.0",
+    "stylelint-config-recess-order": "^4.4.0",
+    "stylelint-config-standard": "^36.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }
