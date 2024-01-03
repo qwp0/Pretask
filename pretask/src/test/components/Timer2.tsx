@@ -36,6 +36,6 @@ export default function Timer2({ isStop }: StopProps) {
   );
 }
 const TimerContainer = styled.section`
-  color: white;
   font-size: 2.2rem;
+  color: white;
 `;
